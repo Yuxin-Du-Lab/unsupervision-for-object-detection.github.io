@@ -3,7 +3,7 @@
 
 |                            paper                             |   pub    |                          main idea                           |
 | :----------------------------------------------------------: | :------: | :----------------------------------------------------------: |
-| Leverage Your Local and Global Representations: A New Self-Supervised Learning Strategy | CVPR2022 | 用MLP来取代cosine-sim作为local-local crops的相似度度量（能抓到更rich的local feature）。可附加于simsima、moco等模型改善其效果 |
+| Leverage Your Local and Global Representations: A New Self-Supervised Learning Strategy | CVPR2022 | 用MLP来取代cosine-sim作为local-local crops的相似度度量（能抓到更rich的local feature）。可附加于simsiam、moco等模型改善其效果 |
 |  Exploring simple siamese representation learning.(simsiam)  | CVPR2021 |                                                              |
 | Momentum contrast for unsupervised visual representation learning.(moco) | CVPR2020 |                                                              |
 | Improved baselines with momentum contrastive learning.(moco v2) |          |                                                              |
