@@ -5,7 +5,7 @@
 | :----------------------------------------------------------: | :------: | :----------------------------------------------------------: |
 | Leverage Your Local and Global Representations: A New Self-Supervised Learning Strategy.(LoGo) | CVPR2022 | 用**MLP**来取代cosine-sim作为local-local crops的相似度度量（能抓到更rich的local feature）。可附加于simsiam、moco等模型改善其效果 |
 |  Exploring simple siamese representation learning.(simsiam)  | CVPR2021 | 针对一张图片的一对aug-views，交替对one of two branchs进行**stop-gradient** |
-| Momentum contrast for unsupervised visual representation learning.(moco) | CVPR2020 |                                                              |
+| Momentum contrast for unsupervised visual representation learning.(moco) | CVPR2020 | 维护一个queue，存储过去mini-batch的represents，变相增大batch size；以momentum的方式平滑更新key-encoder。从current mini-batch中构造positive pairs，从queue中构造negative pairs |
 | Improved baselines with momentum contrastive learning.(moco v2) |   2020   |                                                              |
 | UniVIP: A Unified Framework for Self-Supervised Visual Pre-training | CVPR2022 |                                                              |
 | Revisiting the Transferability of Supervised Pretraining: an MLP Perspective | CVPR2022 | 预训练时，在encoder后面加MLP可以缓解encoder的overfitting，保留更多的intra-class variantion，改善后续迁移学习的效果 |
