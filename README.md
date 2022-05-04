@@ -8,7 +8,7 @@
 | Momentum contrast for unsupervised visual representation learning.(moco) | CVPR2020 |                                                              |
 | Improved baselines with momentum contrastive learning.(moco v2) |   2020   |                                                              |
 | UniVIP: A Unified Framework for Self-Supervised Visual Pre-training | CVPR2022 |                                                              |
-| Revisiting the Transferability of Supervised Pretraining: an MLP Perspective | CVPR2022 |                                                              |
+| Revisiting the Transferability of Supervised Pretraining: an MLP Perspective | CVPR2022 | 预训练时，在encoder后面加MLP可以缓解encoder的overfitting，保留更多的intra-class variantion，改善后续迁移学习的效果 |
 
 ### 1. Siamese networks's undesired trivial solution
 
