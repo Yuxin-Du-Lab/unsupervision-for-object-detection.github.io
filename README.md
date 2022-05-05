@@ -29,5 +29,6 @@ In un-/self-supervised representation learning field, methods generally involve 
 
 |                            paper                             |    pub    | main idea |
 | :----------------------------------------------------------: | :-------: | :-------: |
-| UP-DETR: Unsupervised Pre-training for Object Detection with Transformers | CVPR 2021 |           |
+| UP-DETR: Unsupervised Pre-training for Object Detection with Transformers. (UP-DERT) | CVPR 2021 |           |
+|    End-to-end object detection with transformers. (DERT)     | ECCV 2020 |           |
 
