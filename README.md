@@ -24,11 +24,16 @@ In un-/self-supervised representation learning field, methods generally involve 
 
 
 
-## 2. Transformer-based
+## 2. Pre-task design
 
 
 |                            paper                             |    pub    | main idea |
 | :----------------------------------------------------------: | :-------: | :-------: |
 | UP-DETR: Unsupervised Pre-training for Object Detection with Transformers. (UP-DERT) | CVPR 2021 |           |
-|    End-to-end object detection with transformers. (DERT)     | ECCV 2020 |           |
+|   End-to-end object detection with transformers. (DERT) *    | ECCV 2020 |           |
+| Unsupervised embedding learning via invariant and spreading instance feature.(Instance-based discrimination tasks) | IEEE 2019 |           |
+| Unsupervised feature learning via non-parametric instance discrimination. (Instance-based discrimination tasks) | IEEE 2018 |           |
+| Deep clustering for unsupervised learning of visual features. (clustering-based tasks) | ECCV 2018 |           |
+
+**Instancebased discrimination tasks** and **clustering-based tasks** are two typical pretext tasks in recent studies. **UP-DETR** is a novel pretext task, which aims to pre-train transformers based *on the DETR architecture for object detection*.
 
