@@ -1,4 +1,4 @@
-## 关于MoCo的琐碎
+## 关于MoCo
 
 ### 1. Abstract
 
@@ -51,5 +51,71 @@ MoCo作者认为先前的对比学习工作都可以看作上述的Dictionary qu
 >
 > 通过使用momentum使key-encoder缓慢更新，也维持了一致性。
 
+#### 2.5. MoCo的灵活性
 
+MoCo只是提供了一个dynamic dictionary和momentum key-encoder，可以很好地应用各种pre-task。
+
+### 3. Discussion
+
+数据集从ImageNet(1M)变成IG(1B)后，模型的效果有提升，但提升不大，也就一个点不到。**作者认为大的数据没有被充分利用，更好的pre-task也许是解决的途径。**
+
+MoCo和masked auto-encoding结合起来（类似于NLP的BERT）。
+
+>  即MAE
+
+### 4. Related Work
+
+**无监督可做的方向：pre-task(define ground-truth)；loss func(metric diff)**
+
+#### 4.1. Loss Func
+
+生成式网络。自回归：将一个图片encode，然后再decode重建该图，然后对比前后的差异作为loss
+
+判别式网络。将图片打成九宫格，给定中间的格，再随机给一个周围的格子，模型预测其所属位置。（pre-task -> 分类任务）
+
+对比学习。训练过程中，对比学习的目标动态变化，而生成式和判别式目标不变。
+
+对抗学习。衡量的是概率分布之间的差异(?)。先前用于无监督数据生成，后来也用于特征学习（认为既然能生成不错的fake image，那么应该学到了实际数据的分布）
+
+#### 4.2. Pre-task
+
+Denoising auto-encoder：重建整张图
+
+Context auto-encoder：重建某个patch
+
+Colorization：给图片上色
+
+Tracking：视频相关
+
+Clustering
+
+### 5. Method
+
+#### 5.1. Loss Design
+
+##### 5.1.1. SoftMax
+
+<img src="/home/yuxin/下载/MommyTalk1651910281146.jpg" alt="MommyTalk1651910281146" style="zoom:50%;" />
+
+##### 5.1.2. Cross Entropy Loss
+
+![MommyTalk1651910311233](/home/yuxin/下载/MommyTalk1651910311233.jpg)
+
+supervised情况下，分母中的k对应的是数据集中的类别数(ImageNet~1,000)。
+
+而在UN-supervised情况下，每张图片自成一类(Instance Discrimination)，k就是图片总数(ImageNet~128w)，难以计算
+
+##### 5.1.3. Noise Constrastive Estimation(NCE Loss)
+
+将这么多类看作二分类，分为data sample & noisy sample，即Noise Constrastive。但仍然将其他所有图片都看作noisy sample时，计算量并没有减少，故使用采样Estimation。而采样越多（对应MoCo等对比学习中的dictionary越大），Estimation越准确，结果越好。
+
+##### 5.1.3. InfoNCE
+
+认为将那么多negative classes都看作一个noisy sample类，不是很好，还是作为多分类任务比较合适。
+
+![MommyTalk1651911058736](/home/yuxin/weak-supervision-for-object-detection.github.io/images/MommyTalk1651911058736.jpg)
+
+tau是hyper-parameter，用来改变特征的分布，很有讲究。tau越大，则这些参与计算的特征变换后越小，分布越均匀；反之更peak。
+
+tau过大，模型对所有负样本一视同仁，学习没有重点；tau过小，模型只关注特别困难的样本（但实际这些负样本中可能是存在正样本的），模型难以收敛/不容易泛化。
 
