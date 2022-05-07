@@ -20,5 +20,5 @@ NPL的组成是离散的语义空间（词），语义信息明显，易于token
 
 CV的组成是连续且高维的空间，语义信息不明显，不容易通过字典进行建模，故CV方向的无监督学习进展缓慢。
 
-![2022-05-07 14-15-07 的屏幕截图](unsupervision-for-object-detection.github.io/images/2022-05-07 14-15-07 的屏幕截图.png)
+![2022-05-07 14-15-07 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2014-15-07%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
