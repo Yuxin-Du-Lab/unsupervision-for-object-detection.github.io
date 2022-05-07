@@ -37,3 +37,19 @@ In un-/self-supervised representation learning field, methods generally involve 
 
 **Instancebased discrimination tasks** and **clustering-based tasks** are two typical pretext tasks in recent studies. **UP-DETR** is a novel pretext task, which aims to pre-train transformers based *on the DETR architecture for object detection*.
 
+### 好的模型2.1. instance discrimination
+
+将一张图片x进行randomly crop并做augment后得到两个view: x1,x2 (Transformation),认为这两者similar,作为positive pair. 而数据集中其他所有图片都被认为和x1,x2是dissimilar, 作为negative pair.
+
+(positive/negative定义非常灵活)
+
+
+
+------
+
+## Others
+
+### 1. linear protocol
+
+将pre-train model作为backbone并freeze，只训练后面的fc层，用来评估pre-train model的效果
+
