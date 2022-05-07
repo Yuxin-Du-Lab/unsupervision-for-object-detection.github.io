@@ -32,20 +32,24 @@ CV的组成是连续且高维的空间，语义信息不明显，不容易通过
 
 #### 2.3. Dictionary query与对比学习
 
-![2022-05-07 14-36-27 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 14-36-27 的屏幕截图.png)
+![2022-05-07 14-36-27 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2014-36-27%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 将sampled & encoded(2)的f11, f2, f3....都作为keys，f11作为query，那么对比学习就转换成了字典查询的问题。问题就转变为，训练encoders进行dictionary look-up，使得：**an encoded "query" should be similar to its matching key and dissimilar to others.**
 
 MoCo作者认为先前的对比学习工作都可以看作上述的Dictionary query思路。
 
-2.4. Dictionary Keys 的特点/需求
+#### 2.4. Dictionary Keys 的特点/需求
 
 * 大。大，query就更可能学到具有区分性的语义信息，而不是short cut
 * 一致。keys不通过同一个（或尽可能相似的）encoder产生，那么query就可能匹配到和query-encoder最近似的key-encoder产生的key，也相当于short cut
+
+当时的方法都至少受限制于二者之一。
 
 > MoCo:
 >
 > 通过维护queue，使得Dictionary大，且不断更新，维持一致；
 >
 > 通过使用momentum使key-encoder缓慢更新，也维持了一致性。
+
+
 
