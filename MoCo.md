@@ -30,5 +30,22 @@ CV的组成是连续且高维的空间，语义信息不明显，不容易通过
 
 依据instance discrimination对图片x1产生x11和x12，x11作为anchor通过encoder1提取特征f11，x12作为positive通过encoder2提取特征f12。而其余的图片x2,x3...均认为是negative,通过encoder2（因为encoder1对应的是anchor）得到特征f2,f3...。对比学习的目的是希望在特征空间中positive pairs(e.g. f11 和 f12)尽可能近，而negatvie pairs(e.g. f11和f2,f3...)尽可能远。
 
-#### 2.3. Dictionary与对比学习
+#### 2.3. Dictionary query与对比学习
+
+![2022-05-07 14-36-27 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 14-36-27 的屏幕截图.png)
+
+将sampled & encoded(2)的f11, f2, f3....都作为keys，f11作为query，那么对比学习就转换成了字典查询的问题。问题就转变为，训练encoders进行dictionary look-up，使得：**an encoded "query" should be similar to its matching key and dissimilar to others.**
+
+MoCo作者认为先前的对比学习工作都可以看作上述的Dictionary query思路。
+
+2.4. Dictionary Keys 的特点/需求
+
+* 大。大，query就更可能学到具有区分性的语义信息，而不是short cut
+* 一致。keys不通过同一个（或尽可能相似的）encoder产生，那么query就可能匹配到和query-encoder最近似的key-encoder产生的key，也相当于short cut
+
+> MoCo:
+>
+> 通过维护queue，使得Dictionary大，且不断更新，维持一致；
+>
+> 通过使用momentum使key-encoder缓慢更新，也维持了一致性。
 
