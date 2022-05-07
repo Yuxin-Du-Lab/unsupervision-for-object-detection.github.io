@@ -22,8 +22,6 @@ In un-/self-supervised representation learning field, methods generally involve 
 * Un-contrastive learning: **stop-gradient** operation for one branch([SimSiam](https://openaccess.thecvf.com/content/CVPR2021/html/Chen_Exploring_Simple_Siamese_Representation_Learning_CVPR_2021_paper.html)); a **momentum encoder** ([BYOL](https://proceedings.neurips.cc/paper/2020/hash/f3ada80d5c4ee70142b17b8192b2958e-Abstract.html))
 * Transformer-based\*  [Dino network](https://openaccess.thecvf.com/content/ICCV2021/html/Caron_Emerging_Properties_in_Self-Supervised_Vision_Transformers_ICCV_2021_paper.html)
 
-
-
 ## 2. Pre-task design
 
 
@@ -42,14 +40,4 @@ In un-/self-supervised representation learning field, methods generally involve 
 将一张图片x进行randomly crop并做augment后得到两个view: x1,x2 (Transformation),认为这两者similar,作为positive pair. 而数据集中其他所有图片都被认为和x1,x2是dissimilar, 作为negative pair.
 
 (positive/negative定义非常灵活)
-
-
-
-------
-
-## Others
-
-### 1. linear protocol
-
-将pre-train model作为backbone并freeze，只训练后面的fc层，用来评估pre-train model的效果
 

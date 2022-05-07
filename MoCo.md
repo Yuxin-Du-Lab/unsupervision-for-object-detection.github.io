@@ -12,6 +12,10 @@ Transfer well. Outperform its supervised pre-train counterpart in 7 detection/se
 
 第一个在如此多的下游主流任务中表现如此好的无监督模型。
 
+#### 1.3 linear protocol
+
+将pre-train model作为backbone并freeze，只训练后面的fc层，用来评估pre-train model的效果
+
 ### 2. Introduction
 
 #### 2.1. Compare to NLP
