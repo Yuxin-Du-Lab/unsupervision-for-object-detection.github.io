@@ -95,7 +95,7 @@ Previous work受限于dict-size / consistency
 
 ##### 4.3.1. End-to-end work
 
-![2022-05-07 16-34-10 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 16-34-10 的屏幕截图.png)
+![End-to-end work](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2016-34-10%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 (SimCLR就是这个e2e的办法，用了更多的aug，加了projector头提高特征提取质量，但靠的是google的tpu，batch_size=8192)
 
@@ -107,7 +107,7 @@ xq和xk来自同一个mini-batch，一次forward就能得到一个mini-batch样�
 
 ##### 4.3.2. Memory Bank
 
-![2022-05-07 16-41-33 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 16-41-33 的屏幕截图.png)
+![Memory Bank](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2016-41-33%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 关注增大dict-size，只有query-encoder可以训练，key没有单独的编码器。memory bank就把整个数据集所有图片的特征存起来了(e.g. ImageNet就有128w个特征，128w x dim也不大，几百M就存下了，GPU查询只需要毫秒级)。每次训练时，只需从memory bank里随机抽样作为keys即可。
 
