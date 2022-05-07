@@ -38,7 +38,7 @@ CV的组成是连续且高维的空间，语义信息不明显，不容易通过
 
 MoCo作者认为先前的对比学习工作都可以看作上述的Dictionary query思路。
 
-2.4. Dictionary Keys 的特点/需求
+#### 2.4. Dictionary Keys 的特点/需求
 
 * 大。大，query就更可能学到具有区分性的语义信息，而不是short cut
 * 一致。keys不通过同一个（或尽可能相似的）encoder产生，那么query就可能匹配到和query-encoder最近似的key-encoder产生的key，也相当于short cut
