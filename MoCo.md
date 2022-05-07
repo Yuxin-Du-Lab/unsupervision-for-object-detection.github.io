@@ -26,13 +26,13 @@ CV的组成是连续且高维的空间，语义信息不明显，不容易通过
 
 #### 2.2. 对比学习
 
-![2022-05-07 14-15-07 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2014-15-07%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
+![对比学习](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2014-15-07%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 依据instance discrimination对图片x1产生x11和x12，x11作为anchor通过encoder1提取特征f11，x12作为positive通过encoder2提取特征f12。而其余的图片x2,x3...均认为是negative,通过encoder2（因为encoder1对应的是anchor）得到特征f2,f3...。对比学习的目的是希望在特征空间中positive pairs(e.g. f11 和 f12)尽可能近，而negatvie pairs(e.g. f11和f2,f3...)尽可能远。
 
 #### 2.3. Dictionary query与对比学习
 
-![2022-05-07 14-36-27 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2014-36-27%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
+![Dictionary query](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2014-36-27%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 将sampled & encoded(2)的f11, f2, f3....都作为keys，f11作为query，那么对比学习就转换成了字典查询的问题。问题就转变为，训练encoders进行dictionary look-up，使得：**an encoded "query" should be similar to its matching key and dissimilar to others.**
 
@@ -95,11 +95,11 @@ Clustering
 
 ##### 5.1.1. SoftMax
 
-<img src="/home/yuxin/下载/MommyTalk1651910281146.jpg" alt="MommyTalk1651910281146" style="zoom:50%;" />
+![softmax](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/MommyTalk1651910281146.jpg)
 
 ##### 5.1.2. Cross Entropy Loss
 
-![MommyTalk1651910311233](/home/yuxin/下载/MommyTalk1651910311233.jpg)
+![Cross Entropy Loss](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/MommyTalk1651910311233.jpg)
 
 supervised情况下，分母中的k对应的是数据集中的类别数(ImageNet~1,000)。
 
@@ -113,7 +113,7 @@ supervised情况下，分母中的k对应的是数据集中的类别数(ImageNet
 
 认为将那么多negative classes都看作一个noisy sample类，不是很好，还是作为多分类任务比较合适。
 
-![MommyTalk1651911058736](/home/yuxin/weak-supervision-for-object-detection.github.io/images/MommyTalk1651911058736.jpg)
+![InfoNCE](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/MommyTalk1651911058736.jpg)
 
 tau是hyper-parameter，用来改变特征的分布，很有讲究。tau越大，则这些参与计算的特征变换后越小，分布越均匀；反之更peak。
 
