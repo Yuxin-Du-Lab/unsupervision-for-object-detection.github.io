@@ -89,6 +89,30 @@ Tracking：视频相关
 
 Clustering
 
+#### 4.3. Previous work
+
+Previous work受限于dict-size / consistency
+
+##### 4.3.1. End-to-end work
+
+![2022-05-07 16-34-10 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 16-34-10 的屏幕截图.png)
+
+(SimCLR就是这个e2e的办法，用了更多的aug，加了projector头提高特征提取质量，但靠的是google的tpu，batch_size=8192)
+
+xq和xk来自同一个mini-batch，一次forward就能得到一个mini-batch样本的所有特征，且使用的是同一个key-encoder，consistency非常好
+
+优点：编码器实时更新，consistency非常好
+
+缺点：dictionary-size=mini-batch-size，dictionary-size被局限，太吃硬件
+
+##### 4.3.2. Memory Bank
+
+![2022-05-07 16-41-33 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 16-41-33 的屏幕截图.png)
+
+关注增大dict-size，只有query-encoder可以训练，key没有单独的编码器。memory bank就把整个数据集所有图片的特征存起来了(e.g. ImageNet就有128w个特征，128w x dim也不大，几百M就存下了，GPU查询只需要毫秒级)。每次训练时，只需从memory bank里随机抽样作为keys即可。
+
+每一轮更新完query-encoder后，会为抽出来的keys重新计算特征，再放回memory bank里。训练一个epock才能更新一遍memory bank，query的特征和key的特征差距很大，consistency不好。
+
 ### 5. Method
 
 #### 5.1. Loss Design
@@ -119,3 +143,14 @@ tau是hyper-parameter，用来改变特征的分布，很有讲究。tau越大�
 
 tau过大，模型对所有负样本一视同仁，学习没有重点；tau过小，模型只关注特别困难的样本（但实际这些负样本中可能是存在正样本的），模型难以收敛/不容易泛化。
 
+### 6. Experiment
+
+Learning rate = 30时最优
+
+Fast auto augment ：supervision learning on ImageNet得到的数据增强的策略（赖皮）
+
+用在下游任务时，需要做特征归一化。否则不知道合适的Learning rate等超参数是多少。做了特征归一化后即可与supervision设置同样的超参。
+
+当下游任务数据集足够大时，直接随机初始化从头训练也可以取得比较好的效果（如COCO）(需要较长的学习时间)。那么如何体现MoCo的优越性呢？即比较pre-train model和random/supervision model在epoch比较小时的performance
+
+发现pixel / dence level的下游任务效果不是特别好，故后续有dence contrast，pixel contrast等工作改进这方面
