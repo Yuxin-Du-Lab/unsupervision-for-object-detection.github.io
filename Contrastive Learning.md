@@ -25,7 +25,7 @@
 
 ##### 1.1.1. 灵感
 
-![2022-05-07 18-48-41 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 18-48-41 的屏幕截图.png)
+![2022-05-07 18-48-41 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2018-48-41%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 将一张图片(lion)输入到supervised model中，得到的分类结果，high response对应的都是和该图像**看起来高度相近**的类别(leopard, jaguar, cheetah...)；low response对应的都是基本没关系的类别。
 
@@ -35,7 +35,7 @@
 
 ##### 1.1.2. 方法设计
 
-![2022-05-07 18-57-50 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 18-57-50 的屏幕截图.png)
+![2022-05-07 18-57-50 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2018-57-50%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 **Instance Discrimination**：作者希望，将一个图片输入一个CNN backbone，然后提取特征，最后在特征空间中使每张图片的特征向量都分散得很开（更好地区分每张图片）。
 
@@ -59,13 +59,13 @@ proximal regularization，对memoy bank里的特征进行**动量化**的更新�
 
 #### 1.2.1. 灵感
 
-![2022-05-07 19-13-30 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 19-13-30 的屏幕截图.png)
+![2022-05-07 19-13-30 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2019-13-30%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 最基本的contrasive learning的想法。同一张/相似的图片通过encoder(CNN)出来的feature相似（invariant 不变性），不同图片feature不同（spreading 分散开）。
 
 #### 1.2.2. 方法设计
 
-![2022-05-07 19-17-56 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 19-17-56 的屏幕截图.png)
+![2022-05-07 19-17-56 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2019-17-56%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 pre-task也是instance discrimination
 
@@ -83,7 +83,7 @@ pre-task也是instance discrimination
 
 #### 1.3.1. 方法设计
 
-![2022-05-07 21-10-04 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 21-10-04 的屏幕截图.png)
+![2022-05-07 21-10-04 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2021-10-04%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 t为当前时刻。将之前时刻的输入feed to encoder，得到特征（蓝色），将特征feed to 自回归模型g_ar（auto-regressive，e.ge RNN,LSTM）,得到输出c_t（context representation，代表上下文的特征表示）。用c_t预测未来的z_t,z_t+1.....。
 
@@ -107,7 +107,7 @@ t为当前时刻。将之前时刻的输入feed to encoder，得到特征（蓝�
 
 #### 1.4.2. 方法
 
-![2022-05-07 21-26-21 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-07 21-26-21 的屏幕截图.png)
+![2022-05-07 21-26-21 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-07%2021-26-21%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 正样本：同一张图片的不同view；负样本：任意其他图片的view
 
