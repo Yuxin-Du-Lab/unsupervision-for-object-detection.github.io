@@ -87,11 +87,20 @@ patch embedding学到的和卷积第一层的差不多，都是一些纹理和�
 
 ---------
 
-自监督（后来的MAE）
+### 自监督（后来的MAE）
 
 masked patch prediction模仿bert，但效果不是特别好
 
 对比学习是2020年大火的方法，CV自监督效果最好的方法
 
 Mocov3，dino，都是用contrastive learning训练vit
+
+---------
+
+### 改进的点：
+
+* 任务角度：vit 只做了分类，拿去做检测、分割、其他
+* 结构角度：改tokenization，改transformer block（有人把self-attention换成MLP，仍然可以工作得很好；mataformer认为transformer work的原因是它的结构，而不是中间的某些算子，把self-attention换成不能学习的池化操作，poolformer，在CV领域也能work得很好）。大有可为（据说有人全换成MLP了）
+* 目标函数：继续有监督，尝试多个自监督的训练方式
+* 多模态：CV和NLP打通了
 
