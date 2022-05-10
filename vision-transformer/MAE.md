@@ -6,7 +6,7 @@
 
 --------------
 
-![2022-05-11 01-30-44 的屏幕截图](/home/yuxin/weak-supervision-for-object-detection.github.io/images/2022-05-11 01-30-44 的屏幕截图.png)
+![2022-05-11 01-30-44 的屏幕截图](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/2022-05-11%2001-30-44%20%E7%9A%84%E5%B1%8F%E5%B9%95%E6%88%AA%E5%9B%BE.png)
 
 ----------------
 
