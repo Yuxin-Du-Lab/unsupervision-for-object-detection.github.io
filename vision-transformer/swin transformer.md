@@ -92,7 +92,7 @@ patch merging的过程：
 
 ![img](https://i0.hdslb.com/bfs/note/7125d0ccb3c6561a60de490d2b85dfde4035bf69.png)
 
-![multi-head att](/home/yuxin/weak-supervision-for-object-detection.github.io/images/multi-head att.png)
+![multi-head att](https://github.com/Yuxin-Du-Lab/unsupervision-for-object-detection.github.io/blob/gh-pages/images/multi-head%20att.png)
 
 <center>multi-head attention计算过程<center>
 
